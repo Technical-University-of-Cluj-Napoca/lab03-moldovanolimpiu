@@ -1,4 +1,5 @@
-from utils import *
+import pygame
+from utils import COLORS
 
 class Spot:
     # --- Constructor ---
@@ -21,7 +22,7 @@ class Spot:
         self.height: int = height
         self.x: int = row * width
         self.y: int = col * height
-        self.color: tuple = COLORS["WHITE"]  # default color is white
+        self.color: tuple = COLORS["MENU GRAY"]  # default color is white
         self.neighbors: list = []
         self.total_rows: int = total_rows
 
@@ -40,7 +41,7 @@ class Spot:
         Returns:
             bool: True if the spot is closed (red), False otherwise.
         """
-        return self.color == COLORS['RED']
+        return self.color == COLORS['CLOSED GREEN']
 
     def is_open(self) -> bool:
         """
@@ -72,7 +73,7 @@ class Spot:
         Returns:
             bool: True if the spot is the end node (turquoise), False otherwise.
         """
-        return self.color == COLORS['TURQUOISE']
+        return self.color == COLORS['YELLOW']
 
     # ---- Methods to change the state of the spot (i.e., its setters) ----
     def reset(self) -> None:
@@ -81,7 +82,7 @@ class Spot:
         Returns:
             None
         """
-        self.color = COLORS['WHITE']
+        self.color = COLORS['MENU GRAY']
 
     def make_closed(self) -> None:
         """
@@ -89,7 +90,7 @@ class Spot:
         Returns:
             None
         """
-        self.color = COLORS['RED']
+        self.color = COLORS['CLOSED GREEN']
 
     def make_open(self) -> None:
         """
@@ -129,7 +130,7 @@ class Spot:
         Returns:
             None
         """
-        self.color = COLORS['PURPLE']
+        self.color = COLORS['RED']
 
     # --- Operators ---
     # "Spot" type is not yet defined because the class will be defined at runtime and will exist only after it is closed (the whole class).
